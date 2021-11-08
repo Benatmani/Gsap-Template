@@ -1,6 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 // GSAP Work
-let count = document.querySelectorAll(".services .service-counter .box .counter h2");
+let count = document.querySelectorAll(
+  ".services .service-counter .box .counter h2"
+);
 
 let navBar = gsap.timeline({ delay: 0.3 });
 navBar.from(".logo", { x: -100, duration: 1 });
@@ -17,30 +19,27 @@ let disWidth = dis.offsetWidth;
 dis.style.width = "0px";
 gsap.to(".typeWritter", { duration: 3, width: `${disWidth}`, delay: 4 });
 
-gsap.from(
-  ".about .imagebox img",
-  {
-    duration: 2,
-    x:-100,
-    scrollTrigger: {
-      trigger:".about .imagebox img",
-      start: "top 75%",
-    }
-  }
-);
-gsap.from("#about .content", {
+gsap.from(".about .imagebox img", {
   duration: 2,
-  x: 100,
+  x: -100,
+  scrollTrigger: {
+    trigger: ".about .imagebox img",
+    start: "top 75%",
+  },
+});
+gsap.from("#about .content", {
+  duration: 1,
+  y: 100,
   ease: "power1.inOut",
   scrollTrigger: {
-    trigger:"#about .content",
+    trigger: "#about",
     start: "top 75%",
-  }
+  },
 });
 
 gsap.from(".services .box-services .box", {
   scrollTrigger: {
-    trigger:".services .box-services .box",
+    trigger: ".services .box-services .box",
     start: "top 75%",
   },
   y: 100,
@@ -49,9 +48,8 @@ gsap.from(".services .box-services .box", {
 });
 
 gsap.from(".services .service-counter .box", {
-  scrollTrigger:
-  {
-    trigger:".services .service-counter .box",
+  scrollTrigger: {
+    trigger: ".services .service-counter .box",
     start: "top 75%",
   },
   duration: 0.8,
@@ -59,11 +57,11 @@ gsap.from(".services .service-counter .box", {
   stagger: 0.1,
   onStart: () => {
     count.forEach((item) => startCount(item));
-  }
+  },
 });
 gsap.to(".portofolio .box-work .box", {
   scrollTrigger: {
-    trigger:".portofolio .box-work .box",
+    trigger: ".portofolio .box-work .box",
     start: "top 75%",
   },
   stagger: 0.2,
@@ -73,22 +71,22 @@ gsap.to(".portofolio .box-work .box", {
 
 gsap.from(".blog .box", {
   scrollTrigger: {
-    trigger:".blog .box",
+    trigger: ".blog .box",
     start: "top center",
   },
   stagger: 0.2,
-  x:-100,
-  duration:1
-})
+  x: -100,
+  duration: 1,
+});
 gsap.from(".pricing .box", {
   y: 100,
   duration: 2,
   ease: "back",
-  scrollTrigger:{
+  scrollTrigger: {
     trigger: ".pricing .box",
-    start:"top 75%",
-  }
-})
+    start: "top 75%",
+  },
+});
 // End typeWritter
 
 // JavaScript Work
@@ -138,22 +136,10 @@ card.forEach((item, index) => {
   item.style.left = `${400 * index + 10}px`;
 });
 let position = 0;
-// function changeSlider() {
-//   card.forEach((item) => {
-//     item.style.transform = `translateX(${position}px)`;
-//   });
-// }
-// setInterval(() => {
-//   position -= 350;
-//   changeSlider();
-// }, 2000);
+
 let widthBox = card[1].offsetWidth;
 
-// gsap.to(".testimonial .container .box", { x:`-${widthBox - 50}`,duration:2,repeat:-1});
-
 // Increment count
-
-
 
 function startCount(count) {
   let dataCount = count.dataset.count;
@@ -165,4 +151,3 @@ function startCount(count) {
     }
   }, second);
 }
-
